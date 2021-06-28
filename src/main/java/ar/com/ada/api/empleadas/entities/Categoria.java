@@ -54,6 +54,11 @@ public class Categoria {
     this.empleadas = empleadas;
   }
 
+  public void agregarEmpleada(Empleada empleada){ //metodo para establecer la RB con empleada.java
+    this.empleadas.add(empleada);
+  }
+
+
    
 
 
