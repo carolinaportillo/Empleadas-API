@@ -1,15 +1,26 @@
 package ar.com.ada.api.empleadas.services;
 
 import ar.com.ada.api.empleadas.entities.Categoria;
+import ar.com.ada.api.empleadas.repos.CategoriaRepository;
+
 import java.util.*;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+
+@Service
 public class CategoriaService {
 
-    public List<Categoria> traerCategorias() {
-        return null;
+    @Autowired
+    CategoriaRepository repo;
+
+    public void crearCategoria(Categoria categoria){
+        repo.save(categoria);
     }
 
-    public void crearCategoria(Categoria categoria) {
+    public List<Categoria> traerCategorias(){
+        return repo.findAll();
     }
     
 }
