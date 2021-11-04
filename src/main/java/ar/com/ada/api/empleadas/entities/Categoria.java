@@ -5,6 +5,8 @@ import java.util.*;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "categoria")
 public class Categoria {
@@ -19,6 +21,8 @@ public class Categoria {
   @Column(name= "sueldo_base")
   private BigDecimal sueldoBase;
 
+
+  @JsonIgnore
   @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
   private List<Empleada> empleadas = new ArrayList<>();
 

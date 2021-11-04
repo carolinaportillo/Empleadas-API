@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,7 +39,22 @@ public class CategoriaController {
 
     @GetMapping("/categorias")
     public ResponseEntity<List<Categoria>> traerCategorias(){
+
         return ResponseEntity.ok(service.traerCategorias());
+    }
+
+
+    @DeleteMapping("/categorias/{categoriaId}")
+    public ResponseEntity<GenericResponse> eliminarCategoria(@PathVariable Integer categoriaId){
+
+        GenericResponse respuesta = new GenericResponse();
+         
+        service.eliminarCategoria(categoriaId);
+
+        respuesta.isOk = true;
+        respuesta.message = "La categoria ha sido eliminada correctamente";
+
+        return ResponseEntity.ok(respuesta);
     }
 
     
